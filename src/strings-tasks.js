@@ -186,7 +186,7 @@ function removeLastOccurrences(str, value) {
  */
 function sumOfCodes(str) {
   if (!str) return 0;
-  return str.split('').reduce((acc, curr) => (acc += curr.charCodeAt(0)), 0);
+  return str.split('').reduce((acc, curr) => acc + curr.charCodeAt(0), 0);
 }
 
 /**
@@ -372,8 +372,11 @@ function findLongestWord(sentence) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  return str
+    .split(' ')
+    .map((el) => [...el].reverse().join(''))
+    .join(' ');
 }
 
 /**
