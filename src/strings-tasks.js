@@ -528,8 +528,25 @@ function encodeToRot13(str) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const card = [value.slice(0, -1), value.slice(-1)];
+  let major = 0;
+  let minor = 0;
+
+  if (card[0] === 'A') {
+    minor = 0;
+  } else if (card[0] === 'J') {
+    minor = 10;
+  } else if (card[0] === 'Q') {
+    minor = 11;
+  } else if (card[0] === 'K') {
+    minor = 12;
+  } else {
+    minor = Number(card[0]) - 1;
+  }
+  const decks = ['♣', '♦', '♥', '♠'];
+  major = decks.indexOf(card[1]) * 13;
+  return major + minor;
 }
 
 module.exports = {
